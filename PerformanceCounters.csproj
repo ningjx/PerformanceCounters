@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;net45;</TargetFrameworks>
+    <TargetFrameworks>net45;</TargetFrameworks>
     <PackageId>PerformanceCounters</PackageId>
     <Version>1.0</Version>
     <Authors>Ning</Authors>
@@ -12,6 +12,10 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RepositoryType>GitHub</RepositoryType>
     <PackageProjectUrl>https://github.com/ningjx/PerformanceCounters</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <DocumentationFile>D:\WorkSpace\PerformanceCounters\PerformanceCounters.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
