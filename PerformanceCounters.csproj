@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.0;net45;</TargetFrameworks>
+    <PackageId>PerformanceCounters</PackageId>
+    <Version>1.0</Version>
+    <Authors>Ning</Authors>
+    <Description>Windows性能计数器封装</Description>
+    <Summary>PerformanceCounters,PC Performance</Summary>
+    <Title>PerformanceCounters</Title>
+    <RepositoryUrl>https://github.com/ningjx/PerformanceCounters</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageProjectUrl>https://github.com/ningjx/PerformanceCounters</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+</Project>
