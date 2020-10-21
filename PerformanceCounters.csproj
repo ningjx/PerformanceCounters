@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net45;</TargetFrameworks>
     <PackageId>PerformanceCounters</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Ning</Authors>
     <Description>Windows性能计数器封装</Description>
     <Summary>PerformanceCounters,PC Performance</Summary>
@@ -12,6 +12,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RepositoryType>GitHub</RepositoryType>
     <PackageProjectUrl>https://github.com/ningjx/PerformanceCounters</PackageProjectUrl>
+    <PackageReleaseNotes>请使用最新版&gt;=1.0.2</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
