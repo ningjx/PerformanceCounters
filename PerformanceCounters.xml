@@ -4,54 +4,54 @@
         <name>PerformanceCounters</name>
     </assembly>
     <members>
-        <member name="T:PerformanceCounters.PerformanceCounters">
+        <member name="T:PerformanceTools.PerformanceCounters">
             <summary>
             性能计数器封装
             </summary>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.#ctor(System.Collections.Generic.List{PerformanceCounters.CounterConfig},System.Int32)">
+        <member name="M:PerformanceTools.PerformanceCounters.#ctor(System.Collections.Generic.List{PerformanceTools.CounterConfig},System.Int32)">
             <summary>
             初始化计数器
             </summary>
             <param name="pCounterInfos">需要使用的计数器的列表</param>
             <param name="miSec">刷新间隔时间（ms）</param>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.Start">
+        <member name="M:PerformanceTools.PerformanceCounters.Start">
             <summary>
             开始计数
             </summary>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.Stop">
+        <member name="M:PerformanceTools.PerformanceCounters.Stop">
             <summary>
             暂停计数
             </summary>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.SetTimerInterval(System.Int32)">
+        <member name="M:PerformanceTools.PerformanceCounters.SetTimerInterval(System.Int32)">
             <summary>
             重新设置刷新间隔时间
             </summary>
             <param name="miSec"></param>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.GetAllCategorys">
+        <member name="M:PerformanceTools.PerformanceCounters.GetAllCategorys">
             <summary>
             获取本机所有计数器类型
             </summary>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.GetAllCountersWithCategory(System.String)">
+        <member name="M:PerformanceTools.PerformanceCounters.GetAllCountersWithCategory(System.String)">
             <summary>
             获取指定类型下的所有计数器
             </summary>
             <param name="CategoryName">计数器类型</param>
             <returns></returns>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.GetAllInstanceWithCategory(System.String)">
+        <member name="M:PerformanceTools.PerformanceCounters.GetAllInstanceWithCategory(System.String)">
             <summary>
             获取指定类型下的所有可被计数的实例
             </summary>
             <param name="CategoryName">计数器类型</param>
             <returns></returns>
         </member>
-        <member name="M:PerformanceCounters.PerformanceCounters.GetAllCategorysInfo(System.String,System.Boolean)">
+        <member name="M:PerformanceTools.PerformanceCounters.GetAllCategorysInfo(System.String,System.Boolean)">
             <summary>
             获取本机所有计数器以及它们关联的实例名和包含的计数器名称
             警告!!!:很慢，慎用。(i7-8565U用时1分40秒)，建议使用异步写入到文件查看。
@@ -61,157 +61,157 @@
             <param name="isSync">当文件名不存在时，异步不生效</param>
             <returns></returns>
         </member>
-        <member name="E:PerformanceCounters.PerformanceCounters.ReciveData">
+        <member name="E:PerformanceTools.PerformanceCounters.ReciveData">
             <summary>
             每次刷新后的事件
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterConfig.CategoryName">
+        <member name="F:PerformanceTools.CounterConfig.CategoryName">
             <summary>
             计数器类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterConfig.CounterName">
+        <member name="F:PerformanceTools.CounterConfig.CounterName">
             <summary>
             计数器名称
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterConfig.InstanceName">
+        <member name="F:PerformanceTools.CounterConfig.InstanceName">
             <summary>
             实例名称（被计数的设备名）
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterConfig.Type">
+        <member name="F:PerformanceTools.CounterConfig.Type">
             <summary>
             数据类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterConfig.Func">
+        <member name="F:PerformanceTools.CounterConfig.Func">
             <summary>
             处理数据方法
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterSets.CounterDatas">
+        <member name="F:PerformanceTools.CounterSets.CounterDatas">
             <summary>
             该计数器类型类型下所有被计数设备的计数器列表
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterSets.CategoryName">
+        <member name="F:PerformanceTools.CounterSets.CategoryName">
             <summary>
             计数器类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterSets.CounterName">
+        <member name="F:PerformanceTools.CounterSets.CounterName">
             <summary>
             计数器名称
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterSets.InstanceName">
+        <member name="F:PerformanceTools.CounterSets.InstanceName">
             <summary>
             实例名称（被计数的设备名）
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterSets.Type">
+        <member name="F:PerformanceTools.CounterSets.Type">
             <summary>
             数据类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterSets.Func">
+        <member name="F:PerformanceTools.CounterSets.Func">
             <summary>
             处理数据方法
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.Value">
+        <member name="F:PerformanceTools.CounterData.Value">
             <summary>
             当前计数
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.OldValue">
+        <member name="F:PerformanceTools.CounterData.OldValue">
             <summary>
             上一次计数
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.Count">
+        <member name="F:PerformanceTools.CounterData.Count">
             <summary>
             区间计数
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.CategoryName">
+        <member name="F:PerformanceTools.CounterData.CategoryName">
             <summary>
             计数器类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.CounterName">
+        <member name="F:PerformanceTools.CounterData.CounterName">
             <summary>
             计数器名称
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.InstanceName">
+        <member name="F:PerformanceTools.CounterData.InstanceName">
             <summary>
             实例名称（被计数的设备名）
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.Counter">
+        <member name="F:PerformanceTools.CounterData.Counter">
             <summary>
             计数器实例
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.Type">
+        <member name="F:PerformanceTools.CounterData.Type">
             <summary>
             数据类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CounterData.Func">
+        <member name="F:PerformanceTools.CounterData.Func">
             <summary>
             处理数据方法
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.CategoryName">
+        <member name="F:PerformanceTools.CountersResult.CategoryName">
             <summary>
             计数器类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.CounterName">
+        <member name="F:PerformanceTools.CountersResult.CounterName">
             <summary>
             计数器名称
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.InstanceName">
+        <member name="F:PerformanceTools.CountersResult.InstanceName">
             <summary>
             实例名称（被计数的设备名）
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.CurrentCount">
+        <member name="F:PerformanceTools.CountersResult.CurrentCount">
             <summary>
             当前计数
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.OldCount">
+        <member name="F:PerformanceTools.CountersResult.OldCount">
             <summary>
             上一次计数
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.Count">
+        <member name="F:PerformanceTools.CountersResult.Count">
             <summary>
             区间计数
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.Type">
+        <member name="F:PerformanceTools.CountersResult.Type">
             <summary>
             数据类型
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.Unit">
+        <member name="F:PerformanceTools.CountersResult.Unit">
             <summary>
             数据单位
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.Func">
+        <member name="F:PerformanceTools.CountersResult.Func">
             <summary>
             处理Count的方法
             </summary>
         </member>
-        <member name="F:PerformanceCounters.CountersResult.Value">
+        <member name="F:PerformanceTools.CountersResult.Value">
             <summary>
             处理后的结果
             </summary>

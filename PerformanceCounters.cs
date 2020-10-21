@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace PerformanceCounters
+namespace PerformanceTools
 {
     /// <summary>
     /// 性能计数器封装
