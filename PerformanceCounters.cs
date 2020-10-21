@@ -17,7 +17,7 @@ namespace PerformanceTools
         private readonly Timer Timer = new Timer();
         private readonly List<CounterSets> CountersSets = new List<CounterSets>();
         private readonly Dictionary<string, CountersResult> CounterResults = new Dictionary<string, CountersResult>();
-        private object Lock;
+        private object Lock = new object();
         private int Interval;
         private float Ratio;
 
