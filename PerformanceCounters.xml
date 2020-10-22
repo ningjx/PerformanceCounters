@@ -26,9 +26,9 @@
             暂停计数
             </summary>
         </member>
-        <member name="M:PerformanceTools.PerformanceCounters.SetTimerInterval(System.Int32)">
+        <member name="M:PerformanceTools.PerformanceCounters.ResetTimerInterval(System.Int32)">
             <summary>
-            重新设置刷新间隔时间
+            重新设置刷新频率
             </summary>
             <param name="miSec"></param>
         </member>
@@ -46,7 +46,7 @@
         </member>
         <member name="M:PerformanceTools.PerformanceCounters.GetAllInstanceWithCategory(System.String)">
             <summary>
-            获取指定类型下的所有可被计数的实例
+            获取指定类型下的所有可被计数的设备
             </summary>
             <param name="CategoryName">计数器类型</param>
             <returns></returns>
@@ -61,9 +61,14 @@
             <param name="isSync">当文件名不存在时，异步不生效</param>
             <returns></returns>
         </member>
-        <member name="E:PerformanceTools.PerformanceCounters.ReciveData">
+        <member name="E:PerformanceTools.PerformanceCounters.GotData">
             <summary>
-            每次刷新后的事件
+            每次计算结果后触发事件
+            </summary>
+        </member>
+        <member name="T:PerformanceTools.CounterConfig">
+            <summary>
+            初始化需要计数的计数器信息
             </summary>
         </member>
         <member name="F:PerformanceTools.CounterConfig.CategoryName">
@@ -76,9 +81,9 @@
             计数器名称
             </summary>
         </member>
-        <member name="F:PerformanceTools.CounterConfig.InstanceName">
+        <member name="F:PerformanceTools.CounterConfig.EquipmentName">
             <summary>
-            实例名称（被计数的设备名）
+            设备名称
             </summary>
         </member>
         <member name="F:PerformanceTools.CounterConfig.Type">
@@ -91,13 +96,29 @@
             处理数据方法
             </summary>
         </member>
+        <member name="M:PerformanceTools.CounterConfig.#ctor(System.String,System.String,PerformanceTools.CustomType,PerformanceTools.DealDataHandler,System.String)">
+            <summary>
+            计数器构造函数
+            </summary>
+            <param name="categoryName">计数器类别</param>
+            <param name="counterName">计数器名称</param>
+            <param name="type">计数类型</param>
+            <param name="func">处理数值和单位的函数</param>
+            <param name="equipmentName">设备名</param>
+        </member>
         <member name="T:PerformanceTools.DealDataHandler">
             <summary>
-            
+            处理数据
             </summary>
-            <param name="count"></param>
-            <param name="currCount"></param>
-            <param name="currUnit"></param>
+            <param name="count">原始值</param>
+            <param name="currCount">输出值</param>
+            <param name="currUnit">输出单位</param>
+        </member>
+        <member name="T:PerformanceTools.RefreshHandler">
+            <summary>
+            处理输出结果
+            </summary>
+            <param name="datas">输出数据</param>
         </member>
         <member name="F:PerformanceTools.CounterSets.CounterDatas">
             <summary>
@@ -129,6 +150,11 @@
             处理数据方法
             </summary>
         </member>
+        <member name="T:PerformanceTools.CounterData">
+            <summary>
+            单个设备和计数器的结果
+            </summary>
+        </member>
         <member name="F:PerformanceTools.CounterData.Value">
             <summary>
             当前计数
@@ -154,7 +180,7 @@
             计数器名称
             </summary>
         </member>
-        <member name="F:PerformanceTools.CounterData.InstanceName">
+        <member name="F:PerformanceTools.CounterData.EquipmentName">
             <summary>
             实例名称（被计数的设备名）
             </summary>
@@ -172,6 +198,11 @@
         <member name="F:PerformanceTools.CounterData.Func">
             <summary>
             处理数据方法
+            </summary>
+        </member>
+        <member name="T:PerformanceTools.CountersResult">
+            <summary>
+            计数结果
             </summary>
         </member>
         <member name="F:PerformanceTools.CountersResult.CategoryName">
@@ -222,6 +253,76 @@
         <member name="F:PerformanceTools.CountersResult.Value">
             <summary>
             处理后的结果
+            </summary>
+        </member>
+        <member name="T:PerformanceTools.CustomType">
+            <summary>
+            计数类型
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Voltage">
+            <summary>
+            电压
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Clock">
+            <summary>
+            时钟频率
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Temperature">
+            <summary>
+            温度
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Load">
+            <summary>
+            加载
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Fan">
+            <summary>
+            风扇转速
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Power">
+            <summary>
+            功率
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Download">
+            <summary>
+            下载
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Upload">
+            <summary>
+            上传
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Unknown">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="T:PerformanceTools.CategoryInfo">
+            <summary>
+            计数器类别信息
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CategoryInfo.EquipmentNames">
+            <summary>
+            设备列表
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CategoryInfo.CounterNames">
+            <summary>
+            计数器列表
             </summary>
         </member>
     </members>
