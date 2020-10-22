@@ -194,7 +194,7 @@ namespace PerformanceTools
             }
         }
 
-        public delegate void RefreshHandler(List<CountersResult> datas);
+        
 
         /// <summary>
         /// 每次刷新后的事件
@@ -254,7 +254,19 @@ namespace PerformanceTools
         }
     }
 
+    /// <summary>
+    /// 处理数据
+    /// </summary>
+    /// <param name="count">原始值</param>
+    /// <param name="currCount">输出值</param>
+    /// <param name="currUnit">输出单位</param>
     public delegate void DealDataHandler(long count, out float currCount, out string currUnit);
+
+    /// <summary>
+    /// 处理输出结果
+    /// </summary>
+    /// <param name="datas">输出数据</param>
+    public delegate void RefreshHandler(List<CountersResult> datas);
 
     public class CounterSets
     {
@@ -435,23 +447,56 @@ namespace PerformanceTools
         }
     }
 
+    /// <summary>
+    /// 计数类型
+    /// </summary>
     public enum CustomType
     {
+        /// <summary>
+        /// 电压
+        /// </summary>
         Voltage, // V
+        /// <summary>
+        /// 时钟频率
+        /// </summary>
         Clock, // MHz
+        /// <summary>
+        /// 温度
+        /// </summary>
         Temperature, // °C
+        /// <summary>
+        /// 加载
+        /// </summary>
         Load, // %
+        /// <summary>
+        /// 风扇转速
+        /// </summary>
         Fan, // RPM
         Flow, // L/h
         Control, // %
         Level, // %
         Factor, // 1
+        /// <summary>
+        /// 功率
+        /// </summary>
         Power, // W
+        /// <summary>
+        /// 数据
+        /// </summary>
         Data, // GB = 2^30 Bytes    
         SmallData, // MB = 2^20 Bytes
         Throughput, // MB/s = 2^20 Bytes/s
+        /// <summary>
+        /// 下载
+        /// </summary>
         Download,
+        /// <summary>
+        /// 上传
+        /// </summary>
         Upload,
+        /// <summary>
+        /// 未知
+        /// </summary>
         Unknown = 99
     }
 

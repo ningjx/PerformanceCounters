@@ -1,11 +1,6 @@
-﻿using System;
+﻿using PerformanceTools;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Demo
@@ -15,6 +10,29 @@ namespace Demo
         public Form1()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            PerformanceHandler.pCounters.ReciveData += PCounters_ReciveData;
+            PerformanceHandler.pCounters.Start();
+        }
+
+        private void PCounters_ReciveData(List<CountersResult> datas)
+        {
+            richTextBox1.Clear();
+            var buf = string.Empty;
+            for (int i = 0; i < datas.Count; i++)
+            {
+                buf += $"计数器实例 {datas[i].InstanceName}，计数器名 {datas[i].CounterName}，计数类型 {datas[i].Type}，值 {datas[i].Value}，单位 {datas[i].Unit}\n";
+            }
+            richTextBox1.Text = buf;
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

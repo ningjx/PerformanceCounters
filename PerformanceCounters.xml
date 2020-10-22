@@ -91,6 +91,14 @@
             处理数据方法
             </summary>
         </member>
+        <member name="T:PerformanceTools.DealDataHandler">
+            <summary>
+            
+            </summary>
+            <param name="count"></param>
+            <param name="currCount"></param>
+            <param name="currUnit"></param>
+        </member>
         <member name="F:PerformanceTools.CounterSets.CounterDatas">
             <summary>
             该计数器类型类型下所有被计数设备的计数器列表
