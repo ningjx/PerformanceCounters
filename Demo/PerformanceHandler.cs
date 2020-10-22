@@ -5,27 +5,17 @@ namespace Demo
 {
     public static class PerformanceHandler
     {
-        public static readonly PerformanceCounters pCounters;
-        public static string StrData = string.Empty;
+        public static readonly PerformanceCounters PCounters;
+
         static PerformanceHandler()
         {
-
+            //初始化计数器
             List<CounterConfig> pCounterInfos = new List<CounterConfig>
             {
                 new CounterConfig("Network Interface","Bytes Received/sec",CustomType.Download,NetFunc),
                 new CounterConfig("Network Interface","Bytes Sent/sec",CustomType.Upload,NetFunc),
             };
-            pCounters = new PerformanceCounters(pCounterInfos, 1000);
-        }
-
-        private static void PCounters_ReciveData(List<CountersResult> datas)
-        {
-            var buf = string.Empty;
-            for (int i = 0; i < datas.Count; i++)
-            {
-                buf += $"计数器实例 {datas[i].InstanceName}，计数器名 {datas[i].CounterName}，计数类型 {datas[i].Type}，值 {datas[i].Value}，单位 {datas[i].Unit}";
-            }
-            StrData = buf;
+            PCounters = new PerformanceCounters(pCounterInfos, 1000);
         }
 
         /// <summary>
@@ -48,7 +38,5 @@ namespace Demo
                 return;
             }
         }
-
-        public static void Start() { }
     }
 }

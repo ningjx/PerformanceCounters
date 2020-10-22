@@ -15,8 +15,8 @@ namespace Demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            PerformanceHandler.pCounters.ReciveData += PCounters_ReciveData;
-            PerformanceHandler.pCounters.Start();
+            PerformanceHandler.PCounters.ReciveData += PCounters_ReciveData;
+            PerformanceHandler.PCounters.Start();
         }
 
         private void PCounters_ReciveData(List<CountersResult> datas)
@@ -28,11 +28,6 @@ namespace Demo
                 buf += $"计数器实例 {datas[i].InstanceName}，计数器名 {datas[i].CounterName}，计数类型 {datas[i].Type}，值 {datas[i].Value}，单位 {datas[i].Unit}\n";
             }
             richTextBox1.Text = buf;
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
