@@ -15,7 +15,7 @@ namespace Demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            PerformanceHandler.PCounters.ReciveData += PCounters_ReciveData;
+            PerformanceHandler.PCounters.GotData += PCounters_ReciveData;
             PerformanceHandler.PCounters.Start();
         }
 
@@ -70,7 +70,7 @@ namespace Demo
                 };
                 PerformanceHandler.PCounters.Stop();
                 PerformanceHandler.PCounters = new PerformanceCounters(pCounterInfos, 1000);
-                PerformanceHandler.PCounters.ReciveData += PCounters_ReciveData;
+                PerformanceHandler.PCounters.GotData += PCounters_ReciveData;
                 PerformanceHandler.PCounters.Start();
             }
         }

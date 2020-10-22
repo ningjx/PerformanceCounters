@@ -57,10 +57,10 @@ namespace PerformanceTools
         }
 
         /// <summary>
-        /// 重新设置刷新间隔时间
+        /// 重新设置刷新频率
         /// </summary>
         /// <param name="miSec"></param>
-        public void SetTimerInterval(int miSec)
+        public void ResetTimerInterval(int miSec)
         {
             if (miSec > 0)
             {
@@ -137,7 +137,7 @@ namespace PerformanceTools
                     {
                         CategoryInfo info = new CategoryInfo
                         {
-                            InstanceNames = GetAllInstanceWithCategory(category),
+                            EquipmentNames = GetAllInstanceWithCategory(category),
                             CounterNames = GetAllCountersWithCategory(category)
                         };
                         result.ExtensionAdd(category, info);
@@ -176,6 +176,11 @@ namespace PerformanceTools
             }
         }
 
+        /// <summary>
+        /// 每次计算结果后触发事件
+        /// </summary>
+        public event RefreshHandler GotData;
+
         private void GetData(object sender, ElapsedEventArgs e)
         {
             lock (Lock)
@@ -187,19 +192,12 @@ namespace PerformanceTools
                         counter.Value = counter.Counter.NextSample().RawValue;
                         counter.Count = (long)((counter.Value - counter.OldValue) * Ratio);
                         counter.OldValue = counter.Value;
-                        CounterResults.ExtensionAdd(counter.InstanceName + counter.CounterName, new CountersResult(counter));
+                        CounterResults.ExtensionAdd(counter.EquipmentName + counter.CounterName, new CountersResult(counter));
                     }
                 }
-                ReciveData?.Invoke(CounterResults.Values.ToList());
+                GotData?.Invoke(CounterResults.Values.ToList());
             }
         }
-
-
-
-        /// <summary>
-        /// 每次刷新后的事件
-        /// </summary>
-        public event RefreshHandler ReciveData;
     }
 
     internal static class Extensions
@@ -217,6 +215,9 @@ namespace PerformanceTools
         }
     }
 
+    /// <summary>
+    /// 初始化需要计数的计数器信息
+    /// </summary>
     public class CounterConfig
     {
         /// <summary>
@@ -244,6 +245,14 @@ namespace PerformanceTools
         /// </summary>
         public DealDataHandler Func;
 
+        /// <summary>
+        /// 计数器构造函数
+        /// </summary>
+        /// <param name="categoryName">计数器类别</param>
+        /// <param name="counterName">计数器名称</param>
+        /// <param name="type">计数类型</param>
+        /// <param name="func">处理数值和单位的函数</param>
+        /// <param name="equipmentName">设备名</param>
         public CounterConfig(string categoryName, string counterName, CustomType type, DealDataHandler func = null, string equipmentName = null)
         {
             CategoryName = categoryName;
@@ -268,7 +277,7 @@ namespace PerformanceTools
     /// <param name="datas">输出数据</param>
     public delegate void RefreshHandler(List<CountersResult> datas);
 
-    public class CounterSets
+    internal class CounterSets
     {
         /// <summary>
         /// 该计数器类型类型下所有被计数设备的计数器列表
@@ -320,6 +329,9 @@ namespace PerformanceTools
         }
     }
 
+    /// <summary>
+    /// 单个设备和计数器的结果
+    /// </summary>
     public class CounterData
     {
         /// <summary>
@@ -350,7 +362,7 @@ namespace PerformanceTools
         /// <summary>
         /// 实例名称（被计数的设备名）
         /// </summary>
-        public string InstanceName;
+        public string EquipmentName;
 
         /// <summary>
         /// 计数器实例
@@ -370,7 +382,7 @@ namespace PerformanceTools
         public CounterData(PerformanceCounter counter, CustomType type, DealDataHandler func)
         {
             Counter = counter;
-            InstanceName = counter.InstanceName;
+            EquipmentName = counter.InstanceName;
             CounterName = counter.CounterName;
             CategoryName = counter.CategoryName;
             Type = type;
@@ -378,6 +390,9 @@ namespace PerformanceTools
         }
     }
 
+    /// <summary>
+    /// 计数结果
+    /// </summary>
     public class CountersResult
     {
         /// <summary>
@@ -436,7 +451,7 @@ namespace PerformanceTools
             OldCount = data.OldValue;
             CategoryName = data.CategoryName;
             CounterName = data.CounterName;
-            InstanceName = data.InstanceName;
+            InstanceName = data.EquipmentName;
             Count = data.Count;
             Value = Count;
             Type = data.Type;
@@ -500,9 +515,18 @@ namespace PerformanceTools
         Unknown = 99
     }
 
+    /// <summary>
+    /// 计数器类别信息
+    /// </summary>
     public class CategoryInfo
     {
-        public List<string> InstanceNames = new List<string>();
+        /// <summary>
+        /// 设备列表
+        /// </summary>
+        public List<string> EquipmentNames = new List<string>();
+        /// <summary>
+        /// 计数器列表
+        /// </summary>
         public List<string> CounterNames = new List<string>();
     }
 }
