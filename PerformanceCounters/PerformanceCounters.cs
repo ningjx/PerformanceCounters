@@ -107,7 +107,7 @@ namespace PerformanceTools
         }
 
         /// <summary>
-        /// 获取指定类型下的所有可被计数的实例
+        /// 获取指定类型下的所有可被计数的设备
         /// </summary>
         /// <param name="CategoryName">计数器类型</param>
         /// <returns></returns>
@@ -194,7 +194,7 @@ namespace PerformanceTools
             }
         }
 
-        
+
 
         /// <summary>
         /// 每次刷新后的事件
@@ -230,9 +230,9 @@ namespace PerformanceTools
         public string CounterName;
 
         /// <summary>
-        /// 实例名称（被计数的设备名）
+        /// 设备名称
         /// </summary>
-        public string InstanceName;
+        public string EquipmentName;
 
         /// <summary>
         /// 数据类型
@@ -244,13 +244,13 @@ namespace PerformanceTools
         /// </summary>
         public DealDataHandler Func;
 
-        public CounterConfig(string categoryName, string counterName, CustomType type, DealDataHandler func = null, string instanceName = null)
+        public CounterConfig(string categoryName, string counterName, CustomType type, DealDataHandler func = null, string equipmentName = null)
         {
             CategoryName = categoryName;
             CounterName = counterName;
             Type = type;
             Func = func;
-            InstanceName = instanceName;
+            EquipmentName = equipmentName;
         }
     }
 
@@ -306,8 +306,8 @@ namespace PerformanceTools
             Func = info.Func;
             CategoryName = info.CategoryName;
             CounterName = info.CounterName;
-            InstanceName = info.InstanceName;
-            if (info.InstanceName == null)
+            InstanceName = info.EquipmentName;
+            if (info.EquipmentName == null)
             {
                 PerformanceCounterCategory category = new PerformanceCounterCategory(CategoryName);
                 foreach (string name in category.GetInstanceNames())

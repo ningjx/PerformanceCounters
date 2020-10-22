@@ -46,7 +46,7 @@
         </member>
         <member name="M:PerformanceTools.PerformanceCounters.GetAllInstanceWithCategory(System.String)">
             <summary>
-            获取指定类型下的所有可被计数的实例
+            获取指定类型下的所有可被计数的设备
             </summary>
             <param name="CategoryName">计数器类型</param>
             <returns></returns>
@@ -76,9 +76,9 @@
             计数器名称
             </summary>
         </member>
-        <member name="F:PerformanceTools.CounterConfig.InstanceName">
+        <member name="F:PerformanceTools.CounterConfig.EquipmentName">
             <summary>
-            实例名称（被计数的设备名）
+            设备名称
             </summary>
         </member>
         <member name="F:PerformanceTools.CounterConfig.Type">
@@ -90,6 +90,20 @@
             <summary>
             处理数据方法
             </summary>
+        </member>
+        <member name="T:PerformanceTools.DealDataHandler">
+            <summary>
+            处理数据
+            </summary>
+            <param name="count">原始值</param>
+            <param name="currCount">输出值</param>
+            <param name="currUnit">输出单位</param>
+        </member>
+        <member name="T:PerformanceTools.RefreshHandler">
+            <summary>
+            处理输出结果
+            </summary>
+            <param name="datas">输出数据</param>
         </member>
         <member name="F:PerformanceTools.CounterSets.CounterDatas">
             <summary>
@@ -214,6 +228,61 @@
         <member name="F:PerformanceTools.CountersResult.Value">
             <summary>
             处理后的结果
+            </summary>
+        </member>
+        <member name="T:PerformanceTools.CustomType">
+            <summary>
+            计数类型
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Voltage">
+            <summary>
+            电压
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Clock">
+            <summary>
+            时钟频率
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Temperature">
+            <summary>
+            温度
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Load">
+            <summary>
+            加载
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Fan">
+            <summary>
+            风扇转速
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Power">
+            <summary>
+            功率
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Download">
+            <summary>
+            下载
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Upload">
+            <summary>
+            上传
+            </summary>
+        </member>
+        <member name="F:PerformanceTools.CustomType.Unknown">
+            <summary>
+            未知
             </summary>
         </member>
     </members>

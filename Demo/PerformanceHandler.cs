@@ -5,7 +5,7 @@ namespace Demo
 {
     public static class PerformanceHandler
     {
-        public static readonly PerformanceCounters PCounters;
+        public static PerformanceCounters PCounters;
 
         static PerformanceHandler()
         {
